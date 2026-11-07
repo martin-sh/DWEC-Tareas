@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea DWEC03 - Menú Principal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        .ejercicios-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .ejercicio-link {
+            display: block;
+            padding: 15px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+        }
+        .ejercicio-link:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(41, 128, 185, 0.3);
+        }
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tarea DWEC03 - RA3</h1>
+        <p>Resolución de ejercicios prácticos de JavaScript</p>
+        
+        <div class="ejercicios-list">
+            <a href="ejercicio1.html" class="ejercicio-link">Ejercicio 1: Fechas y Ventanas</a>
+            <a href="ejercicio2.html" class="ejercicio-link">Ejercicio 2: Compresión de Cadenas</a>
+            <a href="ejercicio3.html" class="ejercicio-link">Ejercicio 3: Idioma y localStorage</a>
+            <a href="ejercicio4.html" class="ejercicio-link">Ejercicio 4: Redirección Temporizada</a>
+            <a href="ejercicio5.html" class="ejercicio-link">Ejercicio 5: Datos del Navegador</a>
+        </div>
 
+        <div class="footer">
+            Desarrollo Web en Entorno Cliente
+        </div>
+    </div>
+</body>
+</html>
