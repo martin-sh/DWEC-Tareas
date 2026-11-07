@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tarea para DWEC03 - Ejercicio 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            
+            // 1. DECLARACION DE FUNCIONES
+
+                // 1.1. FUNCION COMPRIMIR
+
+            function comprimir(cadena){
+                let longitud = cadena.length;
+                let cadena_comprimida = "";
+                let repeticiones = 1;
+                
+                
+                for (let i=0;i<longitud;i++){ // BUCLE PARA RECORRER CADA CARACTER
+                    let codigo_letra = cadena.charCodeAt(i);
+                    let letraActual = cadena.charAt(i);
+                    let letraSiguiente = cadena.charAt(i+1);
+                    
+                    let esMayuscula = codigo_letra >= 65 && codigo_letra <=90;
+                    let esMinuscula = codigo_letra >= 97 && codigo_letra <= 122;
+                    let esEspacio = codigo_letra === 32;
+                    
+                    
+                    if (!esMayuscula && !esMinuscula && !esEspacio){ // VALIDA QUE SEAN CARACTERES VÁLIDOS
+                        alert("Error: El texto contiene numeros o simbolos");
+                        throw new Error("Error: El texto contiene numeros o simbolos");
+                    }
+                        
+                    if(esEspacio){ // SUSTITUYE ESPACIO POR ?
+                        cadena_comprimida += "?";
+                    }else if(letraActual === letraSiguiente){ //COMPARA LA LETRA ACTUAL CON LA SIGUIENTE
+                        repeticiones++;
+                    }else{
+                        if(repeticiones === 1){ // SI CONTADOR = 1 ENTONCES NO SE REPITE LETRA
+                            cadena_comprimida += letraActual; // REGISTRA LETRA
+                        }else{
+                            cadena_comprimida += repeticiones+letraActual; // REGISTRA REPETICIONES MAS LETRA
+                            repeticiones = 1; // REINICIA EL CONTADOR
+                        }
+                            
+                    }
+                }
+                return cadena_comprimida;
+            }
+            
+                    // 1.2. FUNCION DESCOMPRIMIR
+            function descomprimir(cadenaDescomprimir){
+                let longitud  = cadenaDescomprimir.length;
+                let cadenaDescomprimida = "";
+                let numeroRepeticiones = "";  
+                
+                for(let i=0; i<longitud;i++){ //BUCLE PARA RECORRER CADA CARACTER
+                    let codigoCaracter = cadenaDescomprimir.charCodeAt(i);
+                    if (codigoCaracter >= 48 && codigoCaracter <= 57){ // COMPRUEBA SI ES UN NUMERO
+                        numeroRepeticiones += cadenaDescomprimir.charAt(i); //ALMACENA NUMERO ANALIZADO (SE ANALIZA CARACTER A CARACTER PARA NO LIMITAR DE 0-9)
+                  
+                    }else if(codigoCaracter === 63){ // COMPROBACION SI ES ESPACIO
+                        cadenaDescomprimida += " ";
+                    }else{
+                        let acumulaciones = numeroRepeticiones === "" ? 1 : parseInt(numeroRepeticiones, 10); // SI NO HAY REGISTRO SE ESTABLECE A 1 SINO PARSEO $NumeroRepeticiones A BASE DECIMAL
+                        for(let j=0; j<acumulaciones; j++){ // BUCLE ALMACENA LETRA SEGUN $numeroRepeticiones
+                            cadenaDescomprimida += cadenaDescomprimir.charAt(i);
+                        }
+                        numeroRepeticiones = "";
+                    }
+                }
+                return cadenaDescomprimida;     
+            }
+                
+            // -- 2.IMPRESION EN PANTALLA --    
+
+            let cadena = prompt("Por favor, introduce un texto (SOLO LETRAS Y/O ESPACIOS)");
+
+            if (cadena === null){
+                document.write("Error: CANCELADO POR EL USUARIO "); // COMPRUEBA SI CANCELADO POR USUARIO
+            }else{
+                let cadenaComprimida = comprimir(cadena); //ALMACENA CADENA COMPRIMIDA
+                let cadenaDescomprimida = descomprimir(cadenaComprimida); //ALMACENA CADENA DESCOMPRIMIDA
+                document.write("La cadena comprimida es: "+cadenaComprimida+ "<br>");
+                document.write("La cadena descomprimida es: "+cadenaDescomprimida);  
+            }
+            
+        </script>
+    </body>
+</html>
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tarea para DWEC03 - Ejercicio 5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+
+            // -- 1. DECLARACION DE VARIABLES --
+            const ancho = screen.width;
+            const alto = screen.height;
+            const idioma = navigator.language.slice(0,2).toLowerCase();
+            const protocolo = window.location.protocol;
+            
+            let dispositivo = "";
+            let resolucion = ancho + "x" + alto;
+            let orientacion = "";          
+            let esConexionSegura = "";
+
+            // -- 2. LOGICA DEL PROGRAMA --
+            
+            if (ancho < 768){
+                dispositivo = "movil";
+                
+            }else if (ancho >= 768 && ancho < 1024){
+                dispositivo = "tablet";
+            }else{
+                dispositivo = "escritorio";
+            }
+            
+            if (ancho >= alto){
+                orientacion = "horizontal";
+            }else{
+                orientacion = "vertical";
+            }
+            
+            if (protocolo === "https:"){
+                esConexionSegura = "https:";
+            }else{
+                esConexionSegura = "http:";
+            }
+            
+            // -- 3. IMPRESION POR VENTANA --
+            document.write("Tipo de dispositivo: " + dispositivo + "<br>");
+            document.write("Resolución de pantalla: " + resolucion + "<br>");
+            document.write("Orientacion de la pantalla: " + orientacion + "<br>");
+            document.write("Idioma Principal: " + idioma + "<br>");
+            document.write("Protocolo seguro: " + esConexionSegura);
+            
+        </script>
+    </body>
+</html>

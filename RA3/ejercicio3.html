@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tarea para DWEC03 - Ejercicio 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            
+            if(!(localStorage.getItem("idioma"))){ // PRIMERA VISITA A LA WEB
+                let lenguaje = prompt("Seleccione un idioma (ES o EN)"); // PRIMERA INTERVENCIÓN EL USUARIO Y .toLocaleUpperCase() PARA EVITAR CASE SENSITIVE
+                
+                while(lenguaje === null || (lenguaje.toLocaleUpperCase() !== "ES" && lenguaje.toLocaleUpperCase() !== "EN")){ // BUCLE DE CONTROL
+                    if(lenguaje === null){
+                        alert("Error: CANCELADO POR EL USUARIO"); // COMPRUEBA QUE NO SEA CANCELADO
+                        lenguaje = prompt("Seleccione un idioma (ES o EN)");
+                    }else{
+                        alert("Error: Solamente puede introdudir ES o EN según su preferencia");
+                        lenguaje = prompt("Seleccione un idioma (ES o EN)"); // .toLocaleUpperCase() PARA EVITAR CASE SENSITIVE
+                    }
+                }
+                
+                lenguaje = lenguaje.toLocaleUpperCase(); // PASAMOS ELECCIÓN A MAYUSCULAS; EVITAMOS ERROR SI INTRODUCE es o en
+                localStorage.setItem('idioma',lenguaje); //REGISTRAMOS EL IDIOMA SELECCIONADO
+                }
+            
+            if(localStorage.getItem("idioma") === "ES"){
+                document.write("El idioma seleccionado es español");            
+            }else{
+                document.write("The selected language is English.");
+            }
+            
+                
+                
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tarea para DWEC03 - Ejercicio 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            // 1. DECLARACION DE VARIABLES
+
+            let fecha = new Date();
+            let dia = fecha.getDate();
+            let mes = fecha.getMonth()+1;
+            let anio = fecha.getFullYear();
+
+            const diasRestantes = Math.ceil((new Date(new Date().getFullYear(), 11, 31, 23, 59, 59) - new Date()) / 86400000);
+            const nuevaVentana = window.open('', 'TareaDWEC03', 'width=600,height=400');
+            
+            //2. LOGICA DEL PROGRAMA
+
+            if(nuevaVentana == null){ // COMPROBACION PERMISOS VENTANAS EMERGENTES
+                document.write("Por favor, permite las ventanas emergente y vuelve a recargar la página");
+            }else{
+                nuevaVentana.document.write("Hoy es "+dia+"/"+mes+"/"+anio+ " y faltan "+diasRestantes+" días para fin de año");
+                nuevaVentana.document.close();
+            }
+            
+        </script>
+    </body>
+</html>
